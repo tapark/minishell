@@ -17,13 +17,13 @@
 input$> "echo" -n 'abc2' >>
 typedef struct      s_input
 {
-    char            *token; //토큰 저장 (echo)
-    int             qt; // 따옴표 존재 유무 (0, 1)
-    int             dqt; // 쌍따옴표 존재 유무 (0, 1)
-    int             pipe; // 파이프 존재 유무 (0, 1)
-    int             re; // 리다이렉션 존재 및 방향 (0, 1, 2)
-    int             dre; // 더블다이렉션 존재 유무 (0, 1)
-    sturct s_input  *next; // (input의 다음 토큰 정보 주소)
+    char            *token;     //토큰 저장 (echo)
+    int             qt;         // 따옴표 존재 유무 (0, 1)
+    int             dqt;        // 쌍따옴표 존재 유무 (0, 1)
+    int             pipe;       // 파이프 존재 유무 (0, 1)
+    int             re;         // 리다이렉션 존재 및 방향 (0, 1, 2)
+    int             dre;        // 더블다이렉션 존재 유무 (0, 1)
+    sturct s_input  *next;      // (input의 다음 토큰 정보 주소)
 }                   t_input;
 
 //문제점 : 리다이렉션이나 파이프에 대한 처리가 까다로워 질듯함
