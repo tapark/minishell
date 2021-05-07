@@ -3,6 +3,9 @@ SRCS =	./main.c \
 		./ft_strdup.c \
 		./ft_strlen.c \
 		./get_next_line.c \
+		./parser/ft_parse.c \
+		./libft/ft_calloc.c \
+		./libft/ft_memset.c
 
 NAME = minishell
 OBJS = $(SRCS:.c=.o)

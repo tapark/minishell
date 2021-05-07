@@ -27,6 +27,7 @@ void get_cmd_line(char **input)
 	while (1)
 	{
 		ret = get_next_line(0, input);
+		ft_parse(input);
 		if (ret != 0)
 			break;
 		if (ft_strlen(*input) == 0)
@@ -34,24 +35,34 @@ void get_cmd_line(char **input)
 	}
 }
 
+void	init_cmd(t_cmd	*cmd)
+{
+	cmd->redir_l = 0;
+	cmd->redir_r = 0;
+	cmd->redir_rr = 0;
+	cmd->pipe = 0;
+}
+
 int main(int argc, char **argv, char **envp)
 {
-	int i;
-	char *input;
+	int			i;
+	char		*input;
+	t_struct	s;
 
 	show_pixel_art();
+	init_cmd(&s.cmd);
 
-//*환경변수 출력	
-	i = 0;
-	printf("\n[envp_check]\n");
-	while (envp[i] != NULL)
-	{
-//		if (envp[i][0] == 'P' && envp[i][1] == 'W' && envp[i][2] == 'D')
-//			envp[i][5] = 'Z';
-		printf("%s\n", envp[i++]);
-	}
-	printf("[total : %d]\n", i);
-//
+// //*환경변수 출력	
+// 	i = 0;
+// 	printf("\n[envp_check]\n");
+// 	while (envp[i] != NULL)
+// 	{
+// //		if (envp[i][0] == 'P' && envp[i][1] == 'W' && envp[i][2] == 'D')
+// //			envp[i][5] = 'Z';
+// 		printf("%s\n", envp[i++]);
+// 	}
+// 	printf("[total : %d]\n", i);
+// //
 	while (1)
 	{
 		show_pwd_line();
