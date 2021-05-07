@@ -1,27 +1,31 @@
 # minishell
 
-입력받는 인자들
+###입력받는 인자들
 1. 명령어 (echo, cd 등)
 2. 옵션 (-n 등)
-3. 파이프라인 (|)
+3. 파이프 (|)
 4. 리다이렉션 (<, >, >>)
 5. 명령어(1)와 옵션(2)을 감싸는 따옴표('')/쌍따옴표("")
 
-예외로 생각해볼 수 있는 사항(구현x)
+###예외로 생각해볼 수 있는 사항(구현x)
 1. 따옴표나 쌍따옴표가 홀수개로 들어가는 경우 echo "hello""
 2. escape문자(\)의 기능들
 
-인자 파싱 아이디어(?)
+###인자 파싱 아이디어(?)
 1. 연결리스트(예시)
 ~~~C
-typedef struct s_input
+input$> "echo" -n 'abc2' >>
+typedef struct      s_input
 {
-  char *token;
-  int qt;
-  int dqt;
-  int pipe;
-  int re;
-  int dre;
-  sturct s_input *next;
-} t_input;
+    char            *token; //토큰 저장 (echo)
+    int             qt; // 따옴표 존재 유무 (0, 1)
+    int             dqt; // 쌍따옴표 존재 유무 (0, 1)
+    int             pipe; // 파이프 존재 유무 (0, 1)
+    int             re; // 리다이렉션 존재 및 방향 (0, 1, 2)
+    int             dre; // 더블다이렉션 존재 유무 (0, 1)
+    sturct s_input  *next; // (input의 다음 토큰 정보 주소)
+}                   t_input;
+
+//문제점 : 리다이렉션이나 파이프에 대한 처리가 까다로워 질듯함
+//"echo" -n 'abc2' >> cat 같은경우 4번째 리스트에 도달해야 파이프의 존재 유무를 확인할 수있음
 ~~~
