@@ -1,8 +1,14 @@
 SRCS =	./main.c \
-		./ft_putstr_fd.c \
-		./ft_strdup.c \
-		./ft_strlen.c \
-		./get_next_line.c \
+		./utils/ft_putstr_fd.c \
+		./utils/ft_strdup.c \
+		./utils/ft_strndup.c \
+		./utils/ft_strlen.c \
+		./utils/get_next_line.c \
+		./utils/ft_env_list.c \
+		./utils/ft_strcmp.c \
+		./set_env/copy_env_to_list.c \
+		./set_env/print_env_list.c \
+		./set_env/get_env_token.c \
 
 NAME = minishell
 OBJS = $(SRCS:.c=.o)

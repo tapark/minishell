@@ -38,20 +38,16 @@ int main(int argc, char **argv, char **envp)
 {
 	int i;
 	char *input;
+	int ret;
+	char c[999] = "PATH=ashdkjahsz1234";
+
+	printf("var : %s\n", get_env_variable(c));
+	printf("val : %s\n", get_env_value(c));
 
 	show_pixel_art();
+	copy_env_to_list(envp);
+	print_env_list(&g_env);
 
-//*환경변수 출력	
-	i = 0;
-	printf("\n[envp_check]\n");
-	while (envp[i] != NULL)
-	{
-//		if (envp[i][0] == 'P' && envp[i][1] == 'W' && envp[i][2] == 'D')
-//			envp[i][5] = 'Z';
-		printf("%s\n", envp[i++]);
-	}
-	printf("[total : %d]\n", i);
-//
 	while (1)
 	{
 		show_pwd_line();
