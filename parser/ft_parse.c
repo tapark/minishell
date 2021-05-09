@@ -1,6 +1,6 @@
 #include "../minishell.h"
 
-char	*ft_strtrim(char *s, char c)
+char	*ft_strtrim_space(char *s, char c)
 {
 	int i;
 	int j;
@@ -35,54 +35,79 @@ char	*ft_strtrim(char *s, char c)
 	return (new_s);
 }
 
-int		check_cmd(char **s)
+// int			main(void)
+// {
+// 	char buf[BUF];
+
+// 	getcwd(buf, BUF);
+// 	printf("%s\n", buf);
+// 	return (0);
+// }
+
+void	ft_pwd(t_struct *s)
 {
-	if (ft_strncmp(s[0], "echo", 5))//ft_strncmp 예외처리 엄청 나올 듯. 널까지 봐야하나?
-	{
-		ft_echo
-	}
-	else (ft_strncmp(s[0], "cd", 3))
-	{
-		ft_cd
-	}
-	else (ft_strncmp(s[0], "pwd", 4))
-	{
-		ft_pwd
-	}
-	else (ft_strncmp(s[0], "export", 7))
-	{
-		ft_export
-	}
-	else (ft_strncmp(s[0], "unset", 6))
-	{
-		ft_unset
-	}
-	else (ft_strncmp(s[0], "env", 4))
-	{
-		ft_env
-	}
-	else (ft_strncmp(s[0], "exit", 5))
-	{
-
-	}
-	else
-	{
-
-	}
+	char buf[BUF];
+	//예외처리 일단 제외
+	// printf("|%s| %d", s->cmd->buf, BUF);
+	getcwd(buf, BUF);
+	ft_putstr_fd(buf, 1);
+	ft_putstr_fd("\n", 1);
 }
 
-void	ft_parse(char **s) //왜 2차 배열인지
+int		check_cmd(t_struct *s, char **input)
+{
+	if (!ft_strncmp(input[0], "echo", 4))
+	{
+		printf("잘 들어옴\n");
+		return (0);
+		// ft_echo();
+	}
+	// else (ft_strncmp(s[0], "cd", 2))
+	// {
+	// 	ft_cd();
+	// }
+	else if (!ft_strncmp(input[0], "pwd", 3))
+	{
+		ft_pwd(s);
+	}
+	// else (ft_strncmp(s[0], "export", 6))
+	// {
+	// 	ft_export();
+	// }
+	// else (ft_strncmp(s[0], "unset", 5))
+	// {
+	// 	ft_unset();
+	// }
+	// else (ft_strncmp(s[0], "env", 3))
+	// {
+	// 	ft_env();
+	// }
+	// else (ft_strncmp(s[0], "exit", 4))
+	// {
+	// 	ft_exit();
+	// }
+	else
+	{
+		printf("error !\n");
+		return (0);
+	}
+	return (0);
+}
+
+void	ft_parse(t_struct *s, char **input) //왜 2차 배열인지
 {
 	t_cmd	cmd;
 	char	*tmp;
 	int		ret;
 
-	tmp = ft_strtrim(s[0], ' ');
-	s = ft_split(tmp);
-	ret = check_cmd(s);
-	if (!ret)
+	tmp = ft_strtrim_space(input[0], ' ');
+	s = ft_split(tmp, ' ');
+	ret = 1;
+	while (ret == 1)
 	{
-		//할당 해제..
-		ft_error();
+		ret = check_cmd(s, input);
+		
+		// if ()
+		// 	break ;
 	}
 }

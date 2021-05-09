@@ -1,30 +1,36 @@
+NAME = minishell
+
+LIBFT = ./libft/libft.a
+LIBDIR = ./libft/
+
 SRCS =	./main.c \
-		./ft_putstr_fd.c \
-		./ft_strdup.c \
-		./ft_strlen.c \
 		./get_next_line.c \
 		./parser/ft_parse.c \
-		./libft/ft_calloc.c \
-		./libft/ft_memset.c
 
-NAME = minishell
 OBJS = $(SRCS:.c=.o)
 
 INCS = .
 RM = rm -f
+MAKE = make
 CC = gcc
 CFLAGS = #-Wall -Wextra -Werror
+TO_LIBFT = -C ./libft
 
 $(NAME) : $(OBJS) $(OBJS_CM)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -I $(INCS)
+		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) ./libft.a -I $(INCS)
 
-all : $(NAME)
+all : $(LIBFT) $(NAME)
+
+$(LIBFT):
+	make -C $(LIBDIR)
 
 clean :
 		$(RM) $(OBJS)
+		$(MAKE) -C $(LIBDIR) clean
 
 fclean : clean
 		$(RM) $(NAME)
+		$(MAKE) -C $(LIBDIR) fclean
 
 re : fclean all
 
@@ -32,5 +38,3 @@ test :
 		./$(NAME)
 
 retest : re test
-	
-#git_testt

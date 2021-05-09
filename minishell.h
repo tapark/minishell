@@ -4,9 +4,13 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "./libft/libft.h"
+
+# define BUF 1024 
 
 typedef struct	s_cmd
 {
+	char		*buf;
 	char		**input;
 	int			redir_l;
 	int			redir_r;
@@ -22,15 +26,12 @@ typedef struct	s_struct
 /*
 ** utils
 */
-void	ft_putstr_fd(char *s, int fd);
-char	*ft_strdup(char *s);
-int		ft_strlen(char *s);
 int		get_next_line(int fd, char **line);
 
 /*
 ** sulee
 */
-void	ft_parse(char **input);
+void	ft_parse(t_struct *s, char **input);
 
 /*
 ** libft

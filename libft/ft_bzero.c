@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sulee <sulee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 14:09:50 by sulee             #+#    #+#             */
-/*   Updated: 2020/12/02 18:41:23 by sulee            ###   ########.fr       */
+/*   Created: 2020/09/28 20:27:17 by sulee             #+#    #+#             */
+/*   Updated: 2020/10/20 19:09:18 by sulee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_bzero(void *s, size_t n)
 {
-	void *tmp;
+	unsigned char *ret;
 
-	if (!(tmp = (void *)malloc(count * size)))
-		return (NULL);
-	ft_memset(tmp, 0, count * size);
-	return (tmp);
+	ret = (unsigned char*)s;
+	while (n)
+	{
+		ret[n - 1] = 0;
+		n--;
+	}
 }

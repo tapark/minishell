@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sulee <sulee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 14:09:50 by sulee             #+#    #+#             */
-/*   Updated: 2020/12/02 18:41:23 by sulee            ###   ########.fr       */
+/*   Created: 2020/09/30 12:50:16 by sulee             #+#    #+#             */
+/*   Updated: 2020/10/23 22:56:28 by sulee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int		ft_isalnum(int c)
 {
-	void *tmp;
-
-	if (!(tmp = (void *)malloc(count * size)))
-		return (NULL);
-	ft_memset(tmp, 0, count * size);
-	return (tmp);
+	if (c >= 48 && c <= 57)
+		return (1);
+	else if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	else
+		return (0);
 }

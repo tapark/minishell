@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sulee <sulee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/30 14:09:50 by sulee             #+#    #+#             */
-/*   Updated: 2020/12/02 18:41:23 by sulee            ###   ########.fr       */
+/*   Created: 2020/09/30 13:28:08 by sulee             #+#    #+#             */
+/*   Updated: 2020/10/04 00:57:08 by sulee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int		ft_tolower(int c)
 {
-	void *tmp;
-
-	if (!(tmp = (void *)malloc(count * size)))
-		return (NULL);
-	ft_memset(tmp, 0, count * size);
-	return (tmp);
+	if (c >= 65 && c <= 90)
+	{
+		c = c + 32;
+		return (c);
+	}
+	else
+		return (c);
 }

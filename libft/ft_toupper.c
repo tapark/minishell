@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tapark <tapark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sulee <sulee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/30 15:39:30 by tapark            #+#    #+#             */
-/*   Updated: 2021/05/06 17:13:57 by tapark           ###   ########.fr       */
+/*   Created: 2020/09/30 13:20:06 by sulee             #+#    #+#             */
+/*   Updated: 2020/10/23 23:00:05 by sulee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-char	*ft_strdup(char *s)
+int		ft_toupper(int c)
 {
-	int		i;
-	int		n;
-	char	*dest;
-
-	i = 0;
-	n = ft_strlen(s);
-	if (!(dest = (char *)malloc(sizeof(char) * (n + 1))))
-		return (NULL);
-	while (i < n)
+	if (c >= 97 && c <= 122)
 	{
-		dest[i] = s[i];
-		i++;
+		c = c - 32;
+		return (c);
 	}
-	dest[i] = '\0';
-	return (dest);
+	else
+		return (c);
 }

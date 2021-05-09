@@ -27,7 +27,7 @@ void get_cmd_line(char **input)
 	while (1)
 	{
 		ret = get_next_line(0, input);
-		ft_parse(input);
+		// ft_parse(input);
 		if (ret != 0)
 			break;
 		if (ft_strlen(*input) == 0)
@@ -50,7 +50,7 @@ int main(int argc, char **argv, char **envp)
 	t_struct	s;
 
 	show_pixel_art();
-	init_cmd(&s.cmd);
+	// init_cmd(s.cmd);
 
 // //*환경변수 출력	
 // 	i = 0;
@@ -68,7 +68,7 @@ int main(int argc, char **argv, char **envp)
 		show_pwd_line();
 
 		get_cmd_line(&input);
-
+		ft_parse(&s, &input);
 		ft_putstr_fd("[the input value is : ", 1);
 		ft_putstr_fd(input, 1);
 		ft_putstr_fd("]\n", 1);

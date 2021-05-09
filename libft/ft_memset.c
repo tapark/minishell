@@ -6,11 +6,11 @@
 /*   By: sulee <sulee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 17:18:17 by sulee             #+#    #+#             */
-/*   Updated: 2021/05/06 20:59:41 by sulee            ###   ########.fr       */
+/*   Updated: 2020/12/02 19:12:18 by sulee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {

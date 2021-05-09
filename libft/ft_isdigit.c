@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tapark <tapark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sulee <sulee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/30 15:39:35 by tapark            #+#    #+#             */
-/*   Updated: 2021/05/06 17:13:51 by tapark           ###   ########.fr       */
+/*   Created: 2020/09/30 12:25:48 by sulee             #+#    #+#             */
+/*   Updated: 2020/10/23 22:55:46 by sulee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_strlen(char *s)
+int		ft_isdigit(int c)
 {
-	int i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (c < 48 || c > 57)
+		return (0);
+	else
+		return (1);
 }
