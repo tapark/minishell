@@ -41,12 +41,12 @@ void overwrite_env_list(char *var)
 	}
 }
 
-void set_env_list(char *env)
+void export_env_list(char *env)
 {
 	char *var;
 	t_env *new;
 	int n;
-	
+
 	new = create_env_list_node(env);
 	if (n = env_exist_check(var)) //n번째 존재하는 환경변수
 	{

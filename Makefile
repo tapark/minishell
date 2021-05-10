@@ -9,6 +9,8 @@ SRCS =	./main.c \
 		./set_env/copy_env_to_list.c \
 		./set_env/print_env_list.c \
 		./set_env/get_env_token.c \
+		./set_env/print_sort_env_list.c \
+		./set_env/export_env_list.c \
 
 NAME = minishell
 OBJS = $(SRCS:.c=.o)
@@ -35,5 +37,5 @@ test :
 		./$(NAME)
 
 retest : re test
-	
+
 #git_testt

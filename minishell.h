@@ -24,8 +24,10 @@ void	del_env_list(t_env **head, int n);
 //환경변수 리스트함수2
 void copy_env_to_list(char **envp);
 void print_env_list(t_env **head);
+void print_sort_env_list(t_env **head);
 char *get_env_variable(char *env);
 char *get_env_value(char *env);
+void export_env_list(char *env);
 
 //utils
 void	ft_putstr_fd(char *s, int fd);
