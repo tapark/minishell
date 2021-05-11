@@ -6,11 +6,16 @@ SRCS =	./main.c \
 		./utils/get_next_line.c \
 		./utils/ft_env_list.c \
 		./utils/ft_strcmp.c \
+		./utils/ft_strjoin_free2.c \
 		./set_env/copy_env_to_list.c \
 		./set_env/print_env_list.c \
 		./set_env/get_env_token.c \
 		./set_env/print_sort_env_list.c \
 		./set_env/export_env_list.c \
+		./parse/get_pure_string.c \
+		./parse/quote_error_check.c \
+		./parse/count_token.c \
+		./parse/get_token.c \
 
 NAME = minishell
 OBJS = $(SRCS:.c=.o)

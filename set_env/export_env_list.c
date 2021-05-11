@@ -33,7 +33,7 @@ void overwrite_env_list(char *var)
 		temp = get_env_variable(index->env);
 		if (ft_strcmp(temp, var)) // 같으면 1반환
 		{
-			g_env->env;
+			g_env->env = temp;
 			return ; // var가 g_env에 존재하면 1반환
 		}
 		free(temp);
@@ -48,7 +48,7 @@ void export_env_list(char *env)
 	int n;
 
 	new = create_env_list_node(env);
-	if (n = env_exist_check(var)) //n번째 존재하는 환경변수
+	if ((n = env_exist_check(var))) //n번째 존재하는 환경변수
 	{
 		del_env_list(&g_env, n);
 		add_env_list(&g_env, new, n);

@@ -11,6 +11,16 @@ typedef struct	s_env
 	struct		s_env *next;
 }				t_env;
 
+typedef struct	s_cmd
+{
+	char		*buf;
+	char		**input;
+	int			redir;
+	int			pipe;
+	int			semi;
+	struct		s_cmd *next;
+}				t_cmd;
+
 //환경변수 구조체변수를 전역변수로
 t_env *g_env;
 
@@ -29,6 +39,12 @@ char *get_env_variable(char *env);
 char *get_env_value(char *env);
 void export_env_list(char *env);
 
+//parse
+char *get_pure_string(char *buf);
+int quote_error_check(char *buf);
+int count_token(char *buf);
+char **get_token(char *buf);
+
 //utils
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(char *s);
@@ -36,6 +52,9 @@ char	*ft_strndup(char *s, int n);
 int		ft_strlen(char *s);
 int		ft_strcmp(char *s1, char *s2);
 int		get_next_line(int fd, char **line);
+char	*ft_strjoin_free2(char *s1, char *s2);
+
+
 
 //main
 //int main(int argc, char **argv, char **envp);
