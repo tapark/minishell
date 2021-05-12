@@ -1,82 +1,89 @@
 #include "../minishell.h"
 
-char *single_quote_token(char *buf, int *i, int *j)
+char *get_quote_token(char *buf, int *i)
 {
 	char *dest;
+	int j;
 
-	(*i) = 1;
-	while (buf[*i] != '\'')
-		(*i)++;
-	dest = ft_strndup(buf + 1, ((*i) - 1));
+	j = 0;
 	(*i)++;
-	if (buf[*i] == ' ' || buf[*i] == '\0')
+	if (buf[(*i) - 1] == '\'')
 	{
-		while (buf[*i] == ' ')
+		while (buf[*i] != '\'')
+		{
 			(*i)++;
-		(*j)++;
+			j++;
+		}
 	}
+	else if (buf[(*i) - 1] == '\"')
+	{
+		while (buf[*i] != '\"')
+		{
+			(*i)++;
+			j++;
+		}
+	}
+	dest = ft_strndup(buf + (*i) - j , j);
+	(*i)++;
 	return (dest);
 }
 
-char *double_quote_token(char *buf, int *i, int *j)
+char *get_normal_token(char *buf, int *i)
 {
 	char *dest;
+	int j;
 
-	(*i) = 1;
-	while (buf[*i] != '\"')
-		(*i)++;
-	dest = ft_strndup(buf + 1, ((*i) - 1));
-	(*i)++;
-	if (buf[*i] == ' ' || buf[*i] == '\0')
-	{
-		while (buf[*i] == ' ')
-			(*i)++;
-		(*j)++;
-	}
-	return (dest);
-}
-
-char *normal_char_token(char *buf, int *i, int *j)
-{
-	char *dest;
-
-	(*i) = 0;
+	j = 0;
 	while (buf[*i] != '\'' && buf[*i] != '\"' &&
 			buf[*i] != ' ' && buf[*i] != '\0')
-		(*i)++;
-	dest = ft_strndup(buf, (*i));
-	if (buf[*i] == '\0')
-		(*j)++;
-	else if (buf[*i] == ' ')
 	{
-		while (buf[*i] == ' ')
-			(*i)++;
-		(*j)++;
+		(*i)++;
+		j++;
 	}
+	dest = ft_strndup(buf + (*i) - j , j);
+	return (dest);
+}
+
+char **init_set_token(char *buf)
+{
+	int n;
+	int i;
+	char **dest;
+
+	i = 0;
+	n = count_token(buf);
+	if (!(dest = (char **)malloc(sizeof(char *) * (n + 1))))
+		return (NULL);
+	while (i < n)
+		dest[i++] = ft_strdup("");
+	dest[i] = NULL;
 	return (dest);
 }
 
 char **get_token(char *buf)
 {
 	char **token;
-	int n;
+	char *temp;
 	int i;
 	int j;
 
 	i = 0;
-	j = -1;
-	n = count_token(buf);
-	if (!(token = (char **)malloc(sizeof(char *) * (n + 1))))
-		return (NULL);
-	while (buf[i] != '\0' && j < n - 1)
+	j = 0;
+	token = init_set_token(buf);
+	while (buf[i] != '\0')
 	{
-		if (buf[i] == '\'')
-			token[j] = single_quote_token(&buf[i], &i, &j);
-		else if (buf[i] == '\"')
-			token[j] = double_quote_token(&buf[i], &i, &j);
+		if (buf[i] == ' ' || buf[i] == '\0')
+		{
+			while (buf[i] == ' ')
+				i++;
+			j++;
+			temp = ft_strdup("");
+		}
+		else if (buf[i] == '\'' || buf[i] == '\"')
+			temp = get_quote_token(buf, &i);
 		else
-			token[j] = normal_char_token(&buf[i], &i, &j);
+			temp = get_normal_token(buf, &i);
+		token[j] = ft_strjoin_free2(token[j], temp);
 	}
-	token[++j] = NULL;
 	return (token);
 }
