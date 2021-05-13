@@ -14,30 +14,24 @@ typedef struct	s_env
 typedef struct	s_cmd
 {
 	char		*buf;
-	char		**input;
+	char		**token;
 	int			redir;
 	int			pipe;
 	int			semi;
 	struct		s_cmd *next;
 }				t_cmd;
 
-//환경변수 구조체변수를 전역변수로
-t_env *g_env;
-
-//환경변수 리스트 함수1 : utils/ft_env_list.c
-t_env	*create_env_list_node(char *value);
-void	add_env_list_front(t_env **head, t_env *node);
-void	add_env_list_back(t_env **head, t_env *node);
-void	add_env_list(t_env **head, t_env *node, int n);
-void	del_env_list(t_env **head, int n);
+//환경변수 전역변수
+char **g_env;
 
 //환경변수 리스트함수2
-void copy_env_to_list(char **envp);
-void print_env_list(t_env **head);
-void print_sort_env_list(t_env **head);
+char **copy_envp(char **envp);
+void print_env_line(void);
+void print_sort_env_line(void);
 char *get_env_variable(char *env);
 char *get_env_value(char *env);
-void export_env_list(char *env);
+void export_env_line(char *line);
+int env_exist_check(char *var);
 
 //parse
 char *get_pure_string(char *buf);

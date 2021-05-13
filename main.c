@@ -47,7 +47,7 @@ int main(int argc, char **argv, char **envp)
 //	printf("val : %s\n", get_env_value(c));
 
 	show_pixel_art();
-	copy_env_to_list(envp);
+	g_env = copy_envp(envp);
 //	print_env_list(&g_env);
 
 //	dest = get_pure_string(c);
