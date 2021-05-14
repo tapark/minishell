@@ -61,7 +61,7 @@ void print_sort_env_line(void)
 	i = 0;
 	sort = copy_envp(g_env);
 	sort_env_array(sort);
-	while (i < n)
+	while (sort[i] != NULL)
 	{
 		print_export_form(sort[i]);
 		free(sort[i]);

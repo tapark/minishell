@@ -32,12 +32,20 @@ char *get_env_variable(char *env);
 char *get_env_value(char *env);
 void export_env_line(char *line);
 int env_exist_check(char *var);
+void unset_env_line(char *line);
 
 //parse
 char *get_pure_string(char *buf);
 int quote_error_check(char *buf);
 int count_token(char *buf);
 char **get_token(char *buf);
+
+//built_in
+int var_valid_check(char *line);
+void ft_env(void);
+void ft_export(t_cmd *cmd);
+void ft_unset(t_cmd *cmd);
+void ft_exit(t_cmd *cmd);
 
 //utils
 void	ft_putstr_fd(char *s, int fd);

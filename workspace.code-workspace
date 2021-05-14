@@ -1,6 +1,11 @@
 {
 	"folders": [
 		{
+			"name": "git_minishell",
+			"path": "../git_minishell"
+		},
+		{
+			"name": "minishell",
 			"path": "."
 		}
 	]

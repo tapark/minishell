@@ -62,3 +62,7 @@ typedef struct      s_input
  - 기준문자(세미콜론, 리다이렉션, 파이프) 기준으로 나눠진 input의 토큰들을 저장
  - 그렇다면 2차원 배열에 저장하는 경우 char *token -> char **token
  - 세미콜론의 존재여부또한 체크해주면 좋을듯? int semi
+
+
+### 기록
+ - 5/14 : env, export, unset, exit 기본기능 구현

@@ -36,47 +36,35 @@ void get_cmd_line(char **input)
 
 int main(int argc, char **argv, char **envp)
 {
-	int i;
+	t_cmd cmd;
 	char *input;
-	int ret;
-	char c[999] = "PATH\"=\"a\"shd\'kjah\'sz12\'34";
-	char *dest;
-	char **token;
-//
-//	printf("var : %s\n", get_env_variable(c));
-//	printf("val : %s\n", get_env_value(c));
+
 
 	show_pixel_art();
 	g_env = copy_envp(envp);
-//	print_env_list(&g_env);
 
-//	dest = get_pure_string(c);
-//	printf("pure : %s\n", dest);
 	while (1)
 	{
 		show_pwd_line();
-
 		get_cmd_line(&input);
-
-		ft_putstr_fd("\nthe input value is      : ", 1);
-		ft_putstr_fd(input, 1);
-		ft_putstr_fd("\n", 1);
-
-		dest = get_pure_string(input);
-		ft_putstr_fd("\nthe pure value is       : ", 1);
-		if (dest != NULL)
-			ft_putstr_fd(dest, 1);
+		if (quote_error_check(input) == 0)
+			ft_putstr_fd("qeote: error: not a valid identifier\n", 1);
 		else
-			ft_putstr_fd("quote_error", 1);
-		ft_putstr_fd("\n\n", 1);
-		printf("error_check : %d\n\n", quote_error_check(input));
-		printf("count_token : %d\n\n", count_token(input));
-		token = get_token(input);
-		i = 0;
-		while (token[i] != NULL)
 		{
-			printf("token(%d) : %s\n", i, token[i]);
-			i++;
+			cmd.token = get_token(input);
+			if (ft_strcmp(cmd.token[0], "env"))
+				ft_env();
+			else if (ft_strcmp(cmd.token[0], "export"))
+				ft_export(&cmd);
+			else if (ft_strcmp(cmd.token[0], "unset"))
+				ft_unset(&cmd);
+			else if (ft_strcmp(cmd.token[0], "exit"))
+				ft_exit(&cmd);
+			else
+			{
+				ft_putstr_fd(cmd.token[0], 1);
+				ft_putstr_fd(" :command not found\n", 1);
+			}
 		}
 	}
 	return (0);

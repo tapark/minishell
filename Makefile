@@ -10,10 +10,15 @@ SRCS =	./main.c \
 		./set_env/print_env_line.c \
 		./set_env/get_env_token.c \
 		./set_env/export_env_line.c \
+		./set_env/unset_env_line.c \
 		./parse/get_pure_string.c \
 		./parse/quote_error_check.c \
 		./parse/count_token.c \
 		./parse/get_token.c \
+		./built_in/ft_env.c \
+		./built_in/ft_export.c \
+		./built_in/ft_unset.c \
+		./built_in/ft_exit.c \
 
 NAME = minishell
 OBJS = $(SRCS:.c=.o)
