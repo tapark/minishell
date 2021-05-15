@@ -1,5 +1,7 @@
 #include "../minishell.h"
 
+
+//미사용함수
 char *get_single_quote_string(char *buf)
 {
 	int i;

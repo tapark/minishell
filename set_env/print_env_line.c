@@ -62,12 +62,8 @@ void print_sort_env_line(void)
 	sort = copy_envp(g_env);
 	sort_env_array(sort);
 	while (sort[i] != NULL)
-	{
-		print_export_form(sort[i]);
-		free(sort[i]);
-		i++;
-	}
-	free(sort);
+		print_export_form(sort[i++]);
+	free_double(sort);
 }
 
 void print_env_line(void)

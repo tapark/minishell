@@ -8,20 +8,21 @@ void delete_env_line(int n)
 	char **dest;
 
 	num = 0;
-	while (g_env[i] != NULL)
+	while (g_env[num] != NULL)
 		num++;
 	if (!(dest = (char **)malloc(sizeof(char *) * num)))
 		return ;
 	i = 0;
-	j = 0;	
+	j = 0;
 	while (j < num)
 	{
 		if (j == n)
-			free(g_env[j++]);
-		dest[i++] = ft_strdup(g_env[j]);
-		free(g_env[j++]);
+			j++;
+		dest[i] = ft_strdup(g_env[j]);
+		i++;
+		j++;
 	}
-	free(g_env);
+	free_double(g_env);
 	dest[i] = NULL;
 	g_env = dest;
 }

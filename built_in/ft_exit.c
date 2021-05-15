@@ -16,10 +16,10 @@ int check_numeric(char *token)
 
 void numeric_error(char *token)
 {
-	ft_putstr_fd("exit\n", 1);
-	ft_putstr_fd("exit: ", 1);
-	ft_putstr_fd(token, 1);
-	ft_putstr_fd(": numeric argument required\n", 1);
+	ft_putstr_fd("exit\n", 2);
+	ft_putstr_fd("exit: ", 2);
+	ft_putstr_fd(token, 2);
+	ft_putstr_fd(": numeric argument required\n", 2);
 	exit(1);
 }
 
@@ -43,11 +43,11 @@ void ft_exit(t_cmd *cmd)
 		{
 			if (i == 2)
 			{
-				ft_putstr_fd("exit\n", 1);
+				ft_putstr_fd("exit\n", 2);
 				exit(0);
 			}
 			else
-				ft_putstr_fd("exit\nexit: too many arguments\n", 1);
+				ft_putstr_fd("exit\nexit: too many arguments\n", 2);
 		}
 	}
 }

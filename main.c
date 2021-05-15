@@ -38,6 +38,9 @@ int main(int argc, char **argv, char **envp)
 {
 	t_cmd cmd;
 	char *input;
+	char *tmp;
+	char **input_ps;
+	int i = 0;
 
 
 	show_pixel_art();
@@ -47,24 +50,19 @@ int main(int argc, char **argv, char **envp)
 	{
 		show_pwd_line();
 		get_cmd_line(&input);
-		if (quote_error_check(input) == 0)
-			ft_putstr_fd("qeote: error: not a valid identifier\n", 1);
-		else
+
+		if (input != NULL && input[0] != '\0')
 		{
-			cmd.token = get_token(input);
-			if (ft_strcmp(cmd.token[0], "env"))
-				ft_env();
-			else if (ft_strcmp(cmd.token[0], "export"))
-				ft_export(&cmd);
-			else if (ft_strcmp(cmd.token[0], "unset"))
-				ft_unset(&cmd);
-			else if (ft_strcmp(cmd.token[0], "exit"))
-				ft_exit(&cmd);
+//			ready_to_parse(&cmd, &input);
+
+			if (quote_error_check(input) == 0)
+				ft_putstr_fd("qeote: error: not a valid identifier\n", 1);
 			else
 			{
-				ft_putstr_fd(cmd.token[0], 1);
-				ft_putstr_fd(" :command not found\n", 1);
+				cmd.token = get_token(input);
+				get_built_in_cmd(&cmd);
 			}
+
 		}
 	}
 	return (0);

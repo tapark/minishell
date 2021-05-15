@@ -5,11 +5,11 @@ t_cmd	*create_cmd_list_node(char *buf, int redir, int pipe, int semi)
 	t_cmd *new;
 
 	new = (t_cmd *)malloc(sizeof(t_cmd));
-	new->buf = ft_strdup(buf);
+	// new->buf = ft_strdup(buf); //ft_strdup .. free 는?
+	new->buf = buf;
 	new->redir = redir;
 	new->pipe = pipe;
 	new->semi = semi;
-	new->prev = NULL;
 	new->next = NULL;
 	return (new);
 }
@@ -17,7 +17,6 @@ t_cmd	*create_cmd_list_node(char *buf, int redir, int pipe, int semi)
 void	add_cmd_list_front(t_cmd **head, t_cmd *node)
 {
 	node->next = (*head);
-	(*head)->prev = node;
 	(*head) = node;
 }
 
@@ -33,6 +32,5 @@ void	add_cmd_list_back(t_cmd **head, t_cmd *node)
 		while (index->next != NULL)
 			index = index->next;
 		index->next = node;
-		node->prev = index;
 	}
 }
