@@ -53,7 +53,7 @@ int main(int argc, char **argv, char **envp)
 
 		if (input != NULL && input[0] != '\0')
 		{
-//			ready_to_parse(&cmd, &input);
+			ready_to_parse(&cmd, &input);
 
 			if (quote_error_check(input) == 0)
 				ft_putstr_fd("qeote: error: not a valid identifier\n", 1);

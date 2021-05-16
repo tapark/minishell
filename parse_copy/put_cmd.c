@@ -75,16 +75,16 @@ void    put_cmd_to_s(t_cmd *cmd, char **input_ps)
 //    head_node = create_node(cmd, input_ps[i]); // 첫 노드 생성
     while (input_ps[++i]) // 뒤 이을 노드 생성
     {
-        printf("[%s]\n", remove_other(input_ps[i]));
+//        printf("[%s]\n", remove_other(input_ps[i]));
         new_node = create_node(head_node, input_ps[i]);
         add_cmd_list_back(&head_node, new_node);
     }
-/*
+
     while (head_node != NULL)
     {
         printf("%s\n", head_node->buf);
         sleep(1);
         head_node = head_node->next;
     }
-*/
+
 }

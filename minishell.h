@@ -61,6 +61,7 @@ int		ft_strlen(char *s);
 int		ft_strcmp(char *s1, char *s2);
 int		get_next_line(int fd, char **line);
 char	*ft_strjoin_free2(char *s1, char *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 void	free_double(char **str);
 
 t_cmd	*create_cmd_list_node(char *buf, int redir, int pipe, int semi);

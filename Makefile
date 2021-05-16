@@ -8,6 +8,7 @@ SRCS =	./main.c \
 		./utils/ft_strjoin_free2.c \
 		./utils/ft_cmd_list.c \
 		./utils/free_double.c \
+		./utils/ft_strtrim.c \
 		./set_env/copy_envp.c \
 		./set_env/print_env_line.c \
 		./set_env/get_env_token.c \
